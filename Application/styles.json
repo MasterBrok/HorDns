@@ -1,0 +1,82 @@
+[
+  {
+    "Id": 0,
+    "BorderColor": "#FFFFFF",
+    "Character": "",
+    "Symbol": "",
+    "Colors": [
+      {
+        "Color": "#d3dffa",
+        "Offset": 0.523
+      },
+      {
+        "Color": "#E5F8F2",
+        "Offset": 0.893
+      },
+      {
+        "Color": "#d8eff3",
+        "Offset": 0.744
+      }
+    ]
+  },
+  {
+    "Id": 1,
+    "BorderColor": "#FFFFFF",
+    "Character": "",
+    "Symbol": "",
+    "Colors": [
+      {
+        "Color": "#F8CFD8",
+        "Offset": 0.523
+      },
+      {
+        "Color": "#faefec",
+        "Offset": 0.893
+      },
+      {
+        "Color": "#fbe1e5",
+        "Offset": 0.744
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "BorderColor": "#FFFFFF",
+    "Character": "",
+    "Symbol": "",
+    "Colors": [
+      {
+        "Color": "#decff8",
+        "Offset": 0.523
+      },
+      {
+        "Color": "#EEE6F7",
+        "Offset": 0.893
+      },
+      {
+        "Color": "#e7e2f9",
+        "Offset": 0.744
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "BorderColor": "#FFFFFF",
+    "Character": "",
+    "Symbol": "",
+    "Colors": [
+      {
+        "Color": "#CCE5F7",
+        "Offset": 0.523
+      },
+      {
+        "Color": "#E6EFF7",
+        "Offset": 0.893
+      },
+      {
+        "Color": "#E2F2F9",
+        "Offset": 0.744
+      }
+    ]
+  }
+]

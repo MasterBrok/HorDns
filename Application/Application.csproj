@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<AssemblyName>HorDns</AssemblyName>
+		<TargetFramework>net10.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<ApplicationIcon>Icons\favorite.ico</ApplicationIcon>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Resource Include="Resources\**\*.*" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="favorite.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Icons\favorite.ico">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="H.NotifyIcon.Wpf" Version="2.4.1" />
+		<PackageReference Include="Microsoft-WindowsAPICodePack-Shell" Version="1.1.5" />
+		<PackageReference Include="System.Management" Version="10.0.7" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Icons\trayfavorite.ico">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Content Include="Icons\favorite.ico">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Resource Include="styles.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	  <Content Include="setting.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Page Update="MainWindow.xaml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Page>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Properties\" />
+	</ItemGroup>
+
+
+
+
+</Project>

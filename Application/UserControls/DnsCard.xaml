@@ -1,0 +1,220 @@
+﻿<UserControl x:Class="Application.UserControls.DnsCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Application.UserControls"
+             xmlns:con="clr-namespace:Application.Conventers"
+             mc:Ignorable="d" 
+             d:DesignHeight="160" 
+             d:DesignWidth="340">
+    <UserControl.Resources>
+        <con:ColorHexConventer x:Key="convertToColor"/>
+    </UserControl.Resources>
+
+    <Border
+        x:Name="brdMain"
+        CornerRadius="20"
+        BorderBrush="{Binding Resource.BorderColor,Converter={StaticResource convertToColor}}"
+        BorderThickness="1"
+        >
+        <Border.Triggers>
+            <EventTrigger RoutedEvent="Loaded">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation
+                            Storyboard.TargetProperty="Opacity"
+                            To="1"
+                            From="0"
+                            Duration="00:00:01"
+                            />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Border.Triggers>
+        <Border.Resources>
+            <!--<Style 
+                x:Key="Animate"
+                TargetType="Border">
+                <Setter Property="Opacity" Value="1"/>
+                <Style.Triggers>
+                
+                </Style.Triggers>
+            </Style>-->
+            <Style TargetType="Button">
+                <Setter Property="Foreground" Value="{StaticResource SecondTextColor}"/>
+                <Setter Property="FontSize" Value="19"/>
+                <Setter Property="FontFamily" Value="{StaticResource Main}"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter Property="Width" Value="120"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Background" Value="{StaticResource Btn.Bg.Connect}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="20"
+                                    x:Name="border"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    Background="{TemplateBinding Background}">
+                                <Border.Effect>
+                                    <DropShadowEffect Opacity="0.9" BlurRadius="10" ShadowDepth="5" Color="{Binding Background.Color, RelativeSource={RelativeSource TemplatedParent},IsAsync=True}"/>
+                                </Border.Effect>
+                                <ContentPresenter Margin="0"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="Tag" Value="true">
+                                    <Setter Property="Effect" TargetName="border">
+                                        <Setter.Value>
+                                            <DropShadowEffect Opacity="0.5" BlurRadius="30" ShadowDepth="10" Color="{Binding Background.Color, RelativeSource={RelativeSource TemplatedParent},IsAsync=True}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Background" Value="#9083F0"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Effect" TargetName="border">
+                                        <Setter.Value>
+                                            <DropShadowEffect Opacity="0.9" BlurRadius="25" ShadowDepth="10" Color="{Binding Background.Color, RelativeSource={RelativeSource TemplatedParent},IsAsync=True}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Effect" TargetName="border">
+                                        <Setter.Value>
+                                            <DropShadowEffect Opacity="0.9" BlurRadius="25" ShadowDepth="10" Color="{Binding Foreground.Color, RelativeSource={RelativeSource TemplatedParent},IsAsync=True}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+            </Style>
+        </Border.Resources>
+
+        <!--<Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" >
+                <GradientStop Color="#F4BEF5" Offset="0.523"/>
+                <GradientStop Color="#E0D4F9" Offset="0.893"/>
+
+                <GradientStop Color="#F8D4F8" Offset="0.744"/>
+            </LinearGradientBrush>
+        </Border.Background>-->
+        <Grid>
+
+            <Border
+  x:Name="brdAnimate"
+Grid.ColumnSpan="2"
+                CornerRadius="{Binding ElementName=brdMain,Path=CornerRadius}"
+Background="{Binding Resource.Colors,Converter={StaticResource convertToColor}}"
+>
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition
+                                        Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=UserControl},Path=IsMouseOver}"
+                                        Value="True"
+                                        />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Opacity" Value=".8"/>
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <BlurEffect
+                                            Radius="30"
+                                            KernelType="Gaussian" 
+                                            RenderingBias="Quality"
+                                            />
+                                    </Setter.Value>
+                                </Setter>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+            </Border>
+            <Grid
+            Margin="20 0"
+            VerticalAlignment="Center"
+            >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel
+                    Margin="10 0"
+                VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    >
+                    <Image
+                    Margin="0 5"
+                    HorizontalAlignment="Left"
+                    Height="70"
+                    Source="{Binding Resource.Character,UpdateSourceTrigger=PropertyChanged,NotifyOnSourceUpdated=True}"
+                    />
+                    <ScrollViewer HorizontalScrollBarVisibility="Hidden"
+                                  VerticalScrollBarVisibility="Hidden"
+                                  x:Name="svTitle"
+                                  >
+                        <TextBlock Foreground="{StaticResource CardTextColor}"
+                            Text="{Binding Dns.Title}"
+                                   x:Name="tbTitle"
+                            FontSize="17"
+                            FontWeight="Bold"
+                            FontFamily="{StaticResource Main}"
+                            HorizontalAlignment="Center" 
+                                   RenderTransformOrigin="0.5 0.5">
+                            <TextBlock.RenderTransform>
+                                <TranslateTransform X="0"/>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </ScrollViewer>
+                    <TextBlock
+                            Foreground="{StaticResource CardTextColor}"
+                            Text="{Binding Dns.Ip.Preferred}"
+                            FontSize="15"
+                            FontWeight="Regular"
+                            FontFamily="{StaticResource Main}"
+                            HorizontalAlignment="Center"
+                    />
+                    <TextBlock
+                            Foreground="{StaticResource CardTextColor}"
+                            Text="{Binding Dns.Ip.Alternate}"
+                            FontSize="10"
+                            FontWeight="Regular"
+                            FontFamily="{StaticResource Main}"
+                            HorizontalAlignment="Center"
+                     />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1"
+                            Margin="5"
+                            >
+                    <Image
+                    Margin="0 5"
+                    HorizontalAlignment="Center"
+                    Height="70"
+                    Source="{Binding Resource.Symbol}"
+                    />
+                    <Button
+                        x:Name="btnConnect"
+                        Click="Connect_Click"
+                        Content="Connect"
+                        >
+
+                    </Button>
+
+                </StackPanel>
+
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

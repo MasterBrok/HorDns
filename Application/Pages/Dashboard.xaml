@@ -1,0 +1,102 @@
+﻿<Page x:Class="Application.Pages.Dashboard"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Application.Pages"
+      xmlns:uc="clr-namespace:Application.UserControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Dashboard">
+
+    <Grid Grid.Column="1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border
+       Grid.RowSpan="2"
+        >
+
+            <Grid>
+                <Image
+               Stretch="Uniform"
+              VerticalAlignment="Bottom"
+              HorizontalAlignment="Right"
+              Source="/Resources/Assets/bg.png"
+                     />
+
+            </Grid>
+
+        </Border>
+        <StackPanel
+        Margin="40 0"
+        Orientation="Horizontal"
+        VerticalAlignment="Top"
+        HorizontalAlignment="Left"
+        >
+            <Image
+            Stretch="UniformToFill"
+            Height="140"
+            Width="140"
+            Source="/Resources/Assets/ready.png"
+            />
+            <TextBlock
+            Margin="30 0"
+            FontWeight="Bold"
+            FontFamily="{StaticResource Main}"
+            Foreground="#402258"
+            FontSize="25"
+            VerticalAlignment="Center"
+            Text="Hey!Ready To Connect?"
+            />
+        </StackPanel>
+       
+        <ScrollViewer
+            Grid.Row="1"
+            
+            Style="{DynamicResource ScrollViewerStyle}" 
+            VerticalScrollBarVisibility="Auto"
+             HorizontalScrollBarVisibility="Disabled"
+                  HorizontalAlignment="Left"
+                  >
+            <ScrollViewer.Resources>
+                <Style TargetType="uc:DnsCard">
+                    <Setter Property="Width" Value="330"/>
+                    <Setter Property="Height" Value="160"/>
+                    <Setter Property="Margin" Value="5 4"/>
+                </Style>
+            </ScrollViewer.Resources>
+            <WrapPanel
+                IsEnabled="False"
+                    x:Name="wpDns"
+                >
+                <WrapPanel.Style>
+                    <Style TargetType="WrapPanel">
+                        <Setter Property="RenderTransformOrigin" Value="0.5 0.5"/>
+                        <Setter Property="RenderTransform">
+                            <Setter.Value>
+                                <RotateTransform
+                                    Angle="0"
+                                    />
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value=".5"/>
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <BlurEffect
+                                            KernelType="Gaussian"
+                                            Radius="2"
+                                            />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </WrapPanel.Style>
+            </WrapPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

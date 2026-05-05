@@ -1,0 +1,47 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="Main.Bg.GR.1">#F7CFDB</Color>
+    <Color x:Key="Main.Bg.GR.2">#EBE3E3</Color>
+
+    <Color x:Key="Notification.Bg.GR.1">#EB96A8</Color>
+    <Color x:Key="Notification.Bg.GR.2">#BE9A9A</Color>
+
+    <SolidColorBrush x:Key="Btn.Bg.Connect" Color="#F586CD" />
+
+    <SolidColorBrush x:Key="PrimaryTextColor" Color="#694655"/>
+    <SolidColorBrush x:Key="SecondTextColor" Color="#faffff"/>
+    <SolidColorBrush x:Key="MenuTextColor" Color="#7a5663"/>
+    <SolidColorBrush x:Key="CardTextColor" Color="#36262c"/>
+
+    <SolidColorBrush x:Key="Button.Pressed.Background" Color="#e7e5e0"/>
+
+
+
+
+
+
+
+    <Color x:Key="Card1.Bg.GR.1">#d3dffa</Color>
+    <Color x:Key="Card1.Bg.GR.2">#E5F8F2</Color>
+    <Color x:Key="Card1.Bg.GR.3">#FFDAF0F5</Color>
+    <SolidColorBrush x:Key="Card1.Br">#e5edfa</SolidColorBrush>
+
+
+    <!--Card-->
+    <!--<Color x:Key="Card1.Bg.GR.1">#FFD5E2FA</Color>
+    <Color x:Key="Card1.Bg.GR.2">#E5F8F2</Color>
+    <Color x:Key="Card1.Bg.GR.3">#FFDAF0F5</Color>
+    <SolidColorBrush x:Key="Card1.Br">#e5edfa</SolidColorBrush>
+
+    <Color x:Key="Card2.Bg.GR.1">#F8CFD8</Color>
+    <Color x:Key="Card2.Bg.GR.2">#fbe1e5</Color>
+    <Color x:Key="Card2.Bg.GR.3">#faefec</Color>
+    <SolidColorBrush x:Key="Card2.Br">#ffe8e2</SolidColorBrush>
+
+    <Color x:Key="Card3.Bg.GR.1">#ddd0f7</Color>
+    <Color x:Key="Card3.Bg.GR.2">#e7e2f9</Color>
+    <Color x:Key="Card3.Bg.GR.3">#ede9f7</Color>
+    <SolidColorBrush x:Key="Card3.Br">#ffe8fc</SolidColorBrush>-->
+
+</ResourceDictionary>
