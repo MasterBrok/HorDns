@@ -18,13 +18,15 @@ namespace Application
             Closing += MainWindow_Closing;
         }
 
+
+
+
         private void MainWindow_Closing(object? sender, CancelEventArgs e)
         {
             e.Cancel = true;
             WindowState = WindowState.Minimized;
             ShowInTaskbar = false;
             Notification.Hide();
-
         }
 
         private void App_AccessDinied(object? sender, EventArgs e)
@@ -51,8 +53,8 @@ namespace Application
         private async void Exit_Click(object sender, RoutedEventArgs e)
         {
             //await Task.Delay(TimeSpan.FromSeconds(2));
-            
-            WindowState= WindowState.Minimized;
+
+            WindowState = WindowState.Minimized;
             ShowInTaskbar = false;
             Notification.Hide();
 
@@ -104,6 +106,15 @@ namespace Application
             {
 
             }
+        }
+
+        private void AddDns_Click(object sender, RoutedEventArgs e)
+        {
+            if (!App.IsUpdating)
+                new AddDnsWindow()
+                {
+                    Owner = this,
+                }.ShowDialog();
         }
     }
 }

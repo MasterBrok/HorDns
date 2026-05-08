@@ -13,24 +13,25 @@ internal class DataInitilizer
     {
         try
         {
-            List<Dns> ips = new List<Dns>();
+            List<Models.DnsCardModel> ips = new List<Models.DnsCardModel>();
             await foreach (var line in File.ReadLinesAsync("dns.txt"))
             {
                 try
                 {
                     var splits = line.Split('=');
                     var sliptIp = splits[1].Split(',');
-                    var ip = new Ip()
+                    var ip = new Dns()
                     {
                         Preferred = sliptIp[0],
                         Alternate = sliptIp[1],
                     };
-                    var dns = new Dns()
+
+                    var card = new Models.DnsCardModel()
                     {
-                        Ip = ip,
-                        Title = splits[0]
+                        Dns = ip,
+                        Title = splits[0],
                     };
-                    ips.Add(dns);
+                    ips.Add(card);
                 }
                 catch (Exception)
                 {
@@ -45,9 +46,9 @@ internal class DataInitilizer
 
         }
     }
-    public static async IAsyncEnumerable<DnsCard> Initilizer()
+    public static async IAsyncEnumerable<UserControls.DnsCard> Initilizer()
     {
-        IReadOnlyList<Dns>? dnss;
+        IReadOnlyList<Models.DnsCardModel>? dnss;
         IReadOnlyList<DnsControlStyle>? styles;
         try
         {
@@ -59,8 +60,7 @@ internal class DataInitilizer
             styles = JsonSerializer.Deserialize<IReadOnlyList<DnsControlStyle>>(streamStyles);
 
             string json = await File.ReadAllTextAsync("setting.json");
-            dnss = JsonSerializer.Deserialize<IReadOnlyList<Dns>>(json, options);
-
+            dnss = JsonSerializer.Deserialize<List<Models.DnsCardModel>>(json, options)?.OrderByDescending(a=>a.CreateAt).ToList();
         }
         catch (Exception)
         {
@@ -71,12 +71,12 @@ internal class DataInitilizer
             throw new Exception();
         }
         int id = 0;
-        Random rand = new Random(); 
+        Random rand = new Random();
         foreach (var dns in dnss)
         {
             dns.StyleId = rand.Next(1, styles.Count);
             DnsControlStyle style = styles?.FirstOrDefault(d => d.Id == dns.StyleId) ?? DnsControlStyle.Default;
-            
+
             if (string.IsNullOrWhiteSpace(style?.Character))
                 style.Character = $"{rand.Next(1, 6)}.png";
 
@@ -91,4 +91,5 @@ internal class DataInitilizer
             };
         }
     }
+
 }

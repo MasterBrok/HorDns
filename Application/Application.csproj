@@ -16,7 +16,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="bin\**" />
+	  <EmbeddedResource Remove="bin\**" />
+	  <None Remove="bin\**" />
+	  <Page Remove="bin\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="favorite.ico" />
+	  <None Remove="setting.json" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -38,12 +46,12 @@
 	  <Content Include="Icons\favorite.ico">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
-	  <Resource Include="styles.json">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Resource>
 	  <Content Include="setting.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
+	  <Resource Include="styles.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
 	</ItemGroup>
 
 	<ItemGroup>

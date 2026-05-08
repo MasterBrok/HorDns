@@ -1,240 +1,282 @@
 [
   {
-    "Title": "shecan 1",
-    "Ip": {
-      "Preferred": "178.22.122.101",
-      "Alternate": "185.51.200.1"
-    }
-  },
-  {
     "Title": "shecan 2",
-    "Ip": {
+    "Dns": {
       "Preferred": "178.22.122.100",
       "Alternate": "185.51.200.2"
-    }
+    },
+    "CreateAt": "2026-05-07T14:19:22.6632563+03:30"
   },
   {
-    "Title": "US - Google Public DNS",
-    "Ip": {
-      "Preferred": "8.8.8.8",
-      "Alternate": "8.8.4.4"
-    }
-  },
-  {
-    "Title": "US - OpenDNS",
-    "Ip": {
-      "Preferred": "208.67.222.222",
-      "Alternate": "208.67.220.220"
-    }
-  },
-  {
-    "Title": "US - OpenDNS - 2",
-    "Ip": {
-      "Preferred": "208.67.222.220",
-      "Alternate": "208.67.220.222"
-    }
-  },
-  {
-    "Title": "RU - Yandex",
-    "Ip": {
-      "Preferred": "77.88.8.1",
-      "Alternate": "77.88.8.8"
-    }
-  },
-  {
-    "Title": "AU - Cloudflare",
-    "Ip": {
-      "Preferred": "1.1.1.1",
-      "Alternate": "1.0.0.1"
-    }
-  },
-  {
-    "Title": "US - Norton ConnectSafe Basic",
-    "Ip": {
-      "Preferred": "199.85.126.10",
-      "Alternate": "199.85.127.10"
-    }
-  },
-  {
-    "Title": "US - Level 3 - A",
-    "Ip": {
-      "Preferred": "209.244.0.3",
-      "Alternate": "209.244.0.4"
-    }
-  },
-  {
-    "Title": "US - Level 3 - B",
-    "Ip": {
-      "Preferred": "4.2.2.1",
-      "Alternate": "4.2.2.2"
-    }
-  },
-  {
-    "Title": "US - Level 3 - C",
-    "Ip": {
-      "Preferred": "4.2.2.3",
-      "Alternate": "4.2.2.4"
-    }
-  },
-  {
-    "Title": "US - Level 3 - D",
-    "Ip": {
-      "Preferred": "4.2.2.5",
-      "Alternate": "4.2.2.6"
-    }
-  },
-  {
-    "Title": "US - Comodo Secure",
-    "Ip": {
-      "Preferred": "8.26.56.26",
-      "Alternate": "8.20.247.20"
-    }
-  },
-  {
-    "Title": "US - Dyn",
-    "Ip": {
-      "Preferred": "216.146.35.35",
-      "Alternate": "216.146.36.36"
-    }
-  },
-  {
-    "Title": "US - Norton DNS",
-    "Ip": {
-      "Preferred": "198.153.192.1",
-      "Alternate": "198.153.194.1"
-    }
-  },
-  {
-    "Title": "US - Comodo",
-    "Ip": {
-      "Preferred": "156.154.70.22",
-      "Alternate": "156.154.71.22"
-    }
-  },
-  {
-    "Title": "US - VeriSign Public DNS",
-    "Ip": {
-      "Preferred": "64.6.64.6",
-      "Alternate": "64.6.65.6"
-    }
-  },
-  {
-    "Title": "US - Qwest",
-    "Ip": {
-      "Preferred": "205.171.3.65",
-      "Alternate": "205.171.2.65"
-    }
-  },
-  {
-    "Title": "US - Sprint",
-    "Ip": {
-      "Preferred": "204.97.212.10",
-      "Alternate": "204.117.214.10"
-    }
-  },
-  {
-    "Title": "RU - Safe DNS",
-    "Ip": {
-      "Preferred": "195.46.39.39",
-      "Alternate": "195.46.39.40"
-    }
-  },
-  {
-    "Title": "DE - DNS WATCH",
-    "Ip": {
-      "Preferred": "84.200.69.80",
-      "Alternate": "84.200.70.40"
-    }
-  },
-  {
-    "Title": "US - Sprintlink",
-    "Ip": {
-      "Preferred": "199.2.252.10",
-      "Alternate": "204.97.212.10"
-    }
-  },
-  {
-    "Title": "US - UltraDNS",
-    "Ip": {
-      "Preferred": "204.69.234.1",
-      "Alternate": "204.74.101.1"
-    }
-  },
-  {
-    "Title": "GB - Zen Internet",
-    "Ip": {
-      "Preferred": "212.23.8.1",
-      "Alternate": "212.23.3.1"
-    }
-  },
-  {
-    "Title": "GB - Orange DNS",
-    "Ip": {
-      "Preferred": "195.92.195.94",
-      "Alternate": "195.92.195.95"
-    }
-  },
-  {
-    "Title": "US - Hurricane Electric",
-    "Ip": {
-      "Preferred": "74.82.42.42",
-      "Alternate": ""
-    }
-  },
-  {
-    "Title": "NL - Freenom World",
-    "Ip": {
-      "Preferred": "80.80.80.80",
-      "Alternate": "80.80.81.81"
-    }
-  },
-  {
-    "Title": "FR - FDN",
-    "Ip": {
-      "Preferred": "80.67.169.12",
-      "Alternate": "80.67.169.40"
-    }
-  },
-  {
-    "Title": "US - Neustar 1",
-    "Ip": {
-      "Preferred": "156.154.70.1",
-      "Alternate": "156.154.71.1"
-    }
-  },
-  {
-    "Title": "US - Neustar 2",
-    "Ip": {
-      "Preferred": "156.154.70.5",
-      "Alternate": "156.154.71.5"
-    }
-  },
-  {
-    "Title": "RU - AdGuard",
-    "Ip": {
-      "Preferred": "94.140.14.14",
-      "Alternate": "94.140.15.15"
-    }
-  },
-  {
-    "Title": "US - Quad9 Security",
-    "Ip": {
-      "Preferred": "9.9.9.9",
-      "Alternate": "149.112.112.112"
-    }
-  },
-  {
-    "Title": "US - Quad9 No Security",
-    "Ip": {
-      "Preferred": "9.9.9.10",
-      "Alternate": "149.112.112.10"
-    }
+    "Title": "shecan 1",
+    "Dns": {
+      "Preferred": "178.22.122.101",
+      "Alternate": "185.51.200.1"
+    },
+    "CreateAt": "2026-05-07T14:19:22.6632541+03:30"
   },
   {
     "Title": "DK - Censurfridns",
-    "Ip": {
+    "Dns": {
       "Preferred": "89.233.43.71",
       "Alternate": "91.239.100.100"
-    }
+    },
+    "CreateAt": "2026-05-07T14:17:22.663253+03:30"
+  },
+  {
+    "Title": "US - Quad9 No Security",
+    "Dns": {
+      "Preferred": "9.9.9.10",
+      "Alternate": "149.112.112.10"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6632516+03:30"
+  },
+  {
+    "Title": "US - Quad9 Security",
+    "Dns": {
+      "Preferred": "9.9.9.9",
+      "Alternate": "149.112.112.112"
+    },
+    "CreateAt": "2026-05-07T14:17:22.663244+03:30"
+  },
+  {
+    "Title": "RU - AdGuard",
+    "Dns": {
+      "Preferred": "94.140.14.14",
+      "Alternate": "94.140.15.15"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6632412+03:30"
+  },
+  {
+    "Title": "US - Neustar 2",
+    "Dns": {
+      "Preferred": "156.154.70.5",
+      "Alternate": "156.154.71.5"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6632371+03:30"
+  },
+  {
+    "Title": "US - Neustar 1",
+    "Dns": {
+      "Preferred": "156.154.70.1",
+      "Alternate": "156.154.71.1"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6632357+03:30"
+  },
+  {
+    "Title": "FR - FDN",
+    "Dns": {
+      "Preferred": "80.67.169.12",
+      "Alternate": "80.67.169.40"
+    },
+    "CreateAt": "2026-05-07T14:17:22.663233+03:30"
+  },
+  {
+    "Title": "NL - Freenom World",
+    "Dns": {
+      "Preferred": "80.80.80.80",
+      "Alternate": "80.80.81.81"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6632318+03:30"
+  },
+  {
+    "Title": "US - Hurricane Electric",
+    "Dns": {
+      "Preferred": "74.82.42.42",
+      "Alternate": ""
+    },
+    "CreateAt": "2026-05-07T14:17:22.6632302+03:30"
+  },
+  {
+    "Title": "GB - Orange DNS",
+    "Dns": {
+      "Preferred": "195.92.195.94",
+      "Alternate": "195.92.195.95"
+    },
+    "CreateAt": "2026-05-07T14:17:22.66318+03:30"
+  },
+  {
+    "Title": "GB - Zen Internet",
+    "Dns": {
+      "Preferred": "212.23.8.1",
+      "Alternate": "212.23.3.1"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6630633+03:30"
+  },
+  {
+    "Title": "US - UltraDNS",
+    "Dns": {
+      "Preferred": "204.69.234.1",
+      "Alternate": "204.74.101.1"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6630616+03:30"
+  },
+  {
+    "Title": "US - Sprintlink",
+    "Dns": {
+      "Preferred": "199.2.252.10",
+      "Alternate": "204.97.212.10"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6630532+03:30"
+  },
+  {
+    "Title": "DE - DNS WATCH",
+    "Dns": {
+      "Preferred": "84.200.69.80",
+      "Alternate": "84.200.70.40"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6630521+03:30"
+  },
+  {
+    "Title": "RU - Safe DNS",
+    "Dns": {
+      "Preferred": "195.46.39.39",
+      "Alternate": "195.46.39.40"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6630509+03:30"
+  },
+  {
+    "Title": "US - Sprint",
+    "Dns": {
+      "Preferred": "204.97.212.10",
+      "Alternate": "204.117.214.10"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6630491+03:30"
+  },
+  {
+    "Title": "US - Qwest",
+    "Dns": {
+      "Preferred": "205.171.3.65",
+      "Alternate": "205.171.2.65"
+    },
+    "CreateAt": "2026-05-07T14:17:22.663048+03:30"
+  },
+  {
+    "Title": "US - VeriSign Public DNS",
+    "Dns": {
+      "Preferred": "64.6.64.6",
+      "Alternate": "64.6.65.6"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6630461+03:30"
+  },
+  {
+    "Title": "US - Comodo",
+    "Dns": {
+      "Preferred": "156.154.70.22",
+      "Alternate": "156.154.71.22"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6630428+03:30"
+  },
+  {
+    "Title": "US - Norton DNS",
+    "Dns": {
+      "Preferred": "198.153.192.1",
+      "Alternate": "198.153.194.1"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6630417+03:30"
+  },
+  {
+    "Title": "US - Dyn",
+    "Dns": {
+      "Preferred": "216.146.35.35",
+      "Alternate": "216.146.36.36"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6630406+03:30"
+  },
+  {
+    "Title": "US - Comodo Secure",
+    "Dns": {
+      "Preferred": "8.26.56.26",
+      "Alternate": "8.20.247.20"
+    },
+    "CreateAt": "2026-05-07T14:17:22.663039+03:30"
+  },
+  {
+    "Title": "US - Level 3 - D",
+    "Dns": {
+      "Preferred": "4.2.2.5",
+      "Alternate": "4.2.2.6"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6630283+03:30"
+  },
+  {
+    "Title": "US - Level 3 - C",
+    "Dns": {
+      "Preferred": "4.2.2.3",
+      "Alternate": "4.2.2.4"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6630262+03:30"
+  },
+  {
+    "Title": "US - Level 3 - B",
+    "Dns": {
+      "Preferred": "4.2.2.1",
+      "Alternate": "4.2.2.2"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6630252+03:30"
+  },
+  {
+    "Title": "US - Level 3 - A",
+    "Dns": {
+      "Preferred": "209.244.0.3",
+      "Alternate": "209.244.0.4"
+    },
+    "CreateAt": "2026-05-07T14:17:22.663024+03:30"
+  },
+  {
+    "Title": "US - Norton ConnectSafe Basic",
+    "Dns": {
+      "Preferred": "199.85.126.10",
+      "Alternate": "199.85.127.10"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6630227+03:30"
+  },
+  {
+    "Title": "AU - Cloudflare",
+    "Dns": {
+      "Preferred": "1.1.1.1",
+      "Alternate": "1.0.0.1"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6630189+03:30"
+  },
+  {
+    "Title": "RU - Yandex",
+    "Dns": {
+      "Preferred": "77.88.8.1",
+      "Alternate": "77.88.8.8"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6630175+03:30"
+  },
+  {
+    "Title": "US - OpenDNS - 2",
+    "Dns": {
+      "Preferred": "208.67.222.220",
+      "Alternate": "208.67.220.222"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6630155+03:30"
+  },
+  {
+    "Title": "US - OpenDNS",
+    "Dns": {
+      "Preferred": "208.67.222.222",
+      "Alternate": "208.67.220.220"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6630127+03:30"
+  },
+  {
+    "Title": "US - Google Public DNS",
+    "Dns": {
+      "Preferred": "8.8.8.8",
+      "Alternate": "8.8.4.4"
+    },
+    "CreateAt": "2026-05-07T14:17:22.6628607+03:30"
+  },
+  {
+    "Title": "ISP Mokhaberat",
+    "Dns": {
+      "Preferred": "217.218.155.155",
+      "Alternate": "217.218.127.127"
+    },
+    "CreateAt": "2026-05-07T14:19:04.6582092+03:30"
   }
 ]

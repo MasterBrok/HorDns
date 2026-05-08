@@ -3,17 +3,24 @@ using Application.Models;
 using System.Management;
 using System.Net.NetworkInformation;
 using System.Security.Principal;
+using System.Text.RegularExpressions;
 
 namespace Application.Services;
 
 public class DnsService
 {
 
-    public bool Set(Ip ip)
+    private static string pattern = @"^((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)$";
+
+    public static bool IsValidIp(string ip)
+    {
+        return Regex.IsMatch(ip,pattern);
+    }
+    public bool Set(Dns ip)
     {
         try
         {
-            
+
             if (!IsRunAsAdmin())
                 throw new AccessDeniedException();
 
@@ -32,14 +39,14 @@ public class DnsService
                         ManagementBaseObject objdns = objMO.GetMethodParameters("SetDNSServerSearchOrder");
                         if (objdns != null)
                         {
-                            var dnsArray = string.IsNullOrEmpty(ip.Alternate)
-                                 ? new[] { ip.Preferred }
-                                 : new[] { ip.Preferred, ip.Alternate };
+                            var dnsArray = string.IsNullOrEmpty(ip.Alternate.Value)
+                                 ? new[] { ip.Preferred.Value }
+                                 : new[] { ip.Preferred.Value, ip.Alternate.Value };
                             if (ip.IsEpmty)
                             {
                                 dnsArray = null;
                             }
-                            
+
                             objdns["DNSServerSearchOrder"] = dnsArray;
                             ManagementBaseObject outParams = objMO.InvokeMethod("SetDNSServerSearchOrder", objdns, null);
                             return ((uint)(outParams["ReturnValue"])) == 0;
@@ -63,7 +70,7 @@ public class DnsService
 
         return Nic;
     }
-    public Ip GetCurrentDns()
+    public Dns GetCurrentDns()
     {
         try
         {
@@ -82,7 +89,7 @@ public class DnsService
                         string[] dnsServers = (string[])objMO["DNSServerSearchOrder"];
                         if (dnsServers != null && dnsServers.Length > 0)
                         {
-                            return new Ip
+                            return new Dns
                             {
                                 Preferred = dnsServers[0],
                                 Alternate = dnsServers.Length > 1 ? dnsServers[1] : null
@@ -95,7 +102,7 @@ public class DnsService
         }
         catch (Exception ex)
         {
-            return Ip.Epmty;
+            return Dns.Epmty;
         }
     }
     public string[] GetNetworkAdapters()
@@ -144,4 +151,5 @@ public class DnsService
             return false;
         }
     }
+
 }

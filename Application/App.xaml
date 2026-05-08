@@ -417,6 +417,7 @@
             <ImageSource x:Key="Error">pack://application:,,,/Resources/Assets/notify/error.png</ImageSource>
             <ImageSource x:Key="Success">pack://application:,,,/Resources/Assets/notify/success.png</ImageSource>
             <ImageSource x:Key="Kis">pack://application:,,,/Resources/Assets/kis.png</ImageSource>
+            <ImageSource x:Key="AddDns">pack://application:,,,/Resources/Assets/bg3.png</ImageSource>
 
             <FontFamily x:Key="Main">Comic Sans MS</FontFamily>
             <ResourceDictionary.MergedDictionaries>

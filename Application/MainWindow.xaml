@@ -194,6 +194,13 @@
                             DistanceBetwewn="20"
                             Icon="{StaticResource Settings}"
                             />
+                        <cc:ButtonIcon 
+                             Content="Add"
+                             DistanceBetwewn="20"
+                             Icon="{StaticResource AddItem}"
+                             Click="AddDns_Click"
+                             
+                             />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal"
                                 VerticalAlignment="Bottom"

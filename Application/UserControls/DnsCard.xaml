@@ -179,7 +179,7 @@ Background="{Binding Resource.Colors,Converter={StaticResource convertToColor}}"
                     </ScrollViewer>
                     <TextBlock
                             Foreground="{StaticResource CardTextColor}"
-                            Text="{Binding Dns.Ip.Preferred}"
+                            Text="{Binding Dns.Dns.Preferred}"
                             FontSize="15"
                             FontWeight="Regular"
                             FontFamily="{StaticResource Main}"
@@ -187,7 +187,7 @@ Background="{Binding Resource.Colors,Converter={StaticResource convertToColor}}"
                     />
                     <TextBlock
                             Foreground="{StaticResource CardTextColor}"
-                            Text="{Binding Dns.Ip.Alternate}"
+                            Text="{Binding Dns.Dns.Alternate}"
                             FontSize="10"
                             FontWeight="Regular"
                             FontFamily="{StaticResource Main}"

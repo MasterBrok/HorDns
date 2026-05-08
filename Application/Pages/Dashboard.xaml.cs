@@ -1,6 +1,4 @@
-﻿using Application.Services;
-using Application.UserControls;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace Application.Pages
@@ -12,6 +10,13 @@ namespace Application.Pages
             InitializeComponent();
             Loaded += Dashboard_Loaded;
             App.ForceDisconnect += App_ForceDisconnect;
+            App.ListUpdated += App_ListUpdated;
+        }
+
+        private async void App_ListUpdated(object? sender, EventArgs e)
+        {
+            wpDns.Children.Clear();
+            await Update();
         }
 
         private void App_ForceDisconnect(object? sender, EventArgs e)
@@ -26,26 +31,36 @@ namespace Application.Pages
             }
         }
 
-        private async void Dashboard_Loaded(object sender, RoutedEventArgs e)
+        public async Task Update()
         {
             try
             {
+                App.IsUpdating = true;
                 var currentDns = App.DnsService.GetCurrentDns();
 
                 await foreach (var card in DataInitilizer.Initilizer())
                 {
                     await Task.Delay(300);
-                    if (currentDns is not null && card.Dns.Ip.Equals(currentDns))
+                    if (currentDns is not null && card.Dns.Dns.Equals(currentDns))
                         card.Connect();
+                    App.AddToList(card.Dns);
                     wpDns.Children.Add(card);
                 }
-                //wpDns.Children.OfType<DnsCard>().FirstOrDefault(a => a.Dns.Ip.Equals(currentDns))?.Connect();
+
                 this.wpDns.IsEnabled = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                App.IsUpdating = false;
+            }
+        }
+        private async void Dashboard_Loaded(object sender, RoutedEventArgs e)
+        {
+            await Update();
         }
     }
 }

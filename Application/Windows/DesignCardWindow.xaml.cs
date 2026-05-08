@@ -49,9 +49,9 @@ namespace Application.Windows
             }
         }
 
-        private Dns dns;
+        private DnsCardModel dns;
 
-        public Dns Dns
+        public DnsCardModel Dns
         {
             get { return dns; }
             set

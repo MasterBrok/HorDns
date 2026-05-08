@@ -1,6 +1,7 @@
 ﻿using Application.Exceptions;
 using Application.Models;
 using Application.Services;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -8,7 +9,7 @@ using System.Windows.Media.Animation;
 
 namespace Application.UserControls;
 
-public partial class DnsCard : UserControl
+public partial class DnsCard : UserControl, INotifyPropertyChanged
 {
     public DnsCard()
     {
@@ -16,6 +17,12 @@ public partial class DnsCard : UserControl
         //InitializeAutoScroll();
         this.DataContext = this;
         this.Loaded += DnsCard_Loaded;
+        
+        Dns = new()
+        {
+            Title = "ad"
+        };
+
     }
 
     private void DnsCard_Loaded(object sender, RoutedEventArgs e)
@@ -32,13 +39,17 @@ public partial class DnsCard : UserControl
         DependencyProperty.Register(nameof(Id), typeof(int), typeof(DnsCard), new PropertyMetadata(default));
 
 
-    public Dns Dns
+    public DnsCardModel Dns
     {
-        get { return (Dns)GetValue(DnsProperty); }
-        set { SetValue(DnsProperty, value); }
+        get { return (DnsCardModel)GetValue(DnsProperty); }
+        set
+        {
+            SetValue(DnsProperty, value);
+            PropertyChanged?.Invoke(this, new(nameof(Dns)));
+        }
     }
     public static readonly DependencyProperty DnsProperty =
-        DependencyProperty.Register(nameof(Dns), typeof(Dns), typeof(DnsCard), new PropertyMetadata(default));
+        DependencyProperty.Register(nameof(Dns), typeof(DnsCardModel), typeof(DnsCard), new PropertyMetadata(default));
 
 
 
@@ -51,7 +62,7 @@ public partial class DnsCard : UserControl
     public static readonly DependencyProperty ResourceProperty =
         DependencyProperty.Register(nameof(Resource), typeof(DnsControlStyle), typeof(DnsCard), new PropertyMetadata(default));
 
-
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     public void Disconnect()
     {
@@ -74,12 +85,12 @@ public partial class DnsCard : UserControl
                 Disconnect();
                 Notification.Disconnect();
                 App.Connect = null;
-                App.DnsService.Set(Ip.Epmty);
+                App.DnsService.Set(Models.Dns.Epmty);
                 return;
             }
 
             App.OnForceDisconnect(this);
-            var result = App.DnsService.Set(Dns.Ip);
+            var result = App.DnsService.Set(Dns.Dns);
 
             Notification.Connect();
 
