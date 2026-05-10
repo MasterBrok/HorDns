@@ -42,13 +42,17 @@ namespace Application
         private void DockPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
+            {
                 DragMove();
+            }
         }
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
         }
+
+       
+
 
         private async void Exit_Click(object sender, RoutedEventArgs e)
         {
@@ -88,6 +92,7 @@ namespace Application
             {
                 WindowState = WindowState.Normal;
                 ShowInTaskbar = true;
+                Activate();
             }
             catch (Exception)
             {
@@ -115,6 +120,12 @@ namespace Application
                 {
                     Owner = this,
                 }.ShowDialog();
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            //if (e.Key == Key.S)
+                //InkCanvas.SaveToImage(InkCanvas, $"{Random.Shared.Next(1,1000)}.png", ImageFormat.Png);
         }
     }
 }

@@ -10,13 +10,17 @@
         Background="Transparent"
         AllowsTransparency="True"
         WindowStyle="None"
-        ResizeMode="NoResize"
+        ResizeMode="CanMinimize"
         Width="1320"
         WindowStartupLocation="CenterScreen"
         Height="700"
         Loaded="Window_Loaded"
         xmlns:tb="clr-namespace:H.NotifyIcon;assembly=H.NotifyIcon.Wpf"
         Title="Hor Dns"
+        WindowChrome.IsHitTestVisibleInChrome="False"
+        WindowChrome.WindowChrome="{x:Null}"
+        ShowInTaskbar="True"
+        Topmost="False"
         >
 
     <Border
