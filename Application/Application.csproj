@@ -25,7 +25,6 @@
 
 	<ItemGroup>
 	  <None Remove="favorite.ico" />
-	  <None Remove="setting.json" />
 	  <None Remove="Welcome.png" />
 	</ItemGroup>
 
@@ -36,6 +35,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="DnsClient" Version="1.8.0" />
 		<PackageReference Include="H.NotifyIcon.Wpf" Version="2.4.1" />
 		<PackageReference Include="Microsoft-WindowsAPICodePack-Shell" Version="1.1.5" />
 		<PackageReference Include="System.Management" Version="10.0.7" />
@@ -48,16 +48,16 @@
 	  <Content Include="Icons\favorite.ico">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
-	  <Content Include="setting.json">
+	  <Resource Include="defsetting.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Content>
+	  </Resource>
 	  <Resource Include="styles.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Resource>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Page Update="MainWindow.xaml">
+	  <Page Update="Windows\MainWindow.xaml">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Page>
 	</ItemGroup>

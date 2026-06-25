@@ -9,6 +9,9 @@ public class DnsCardModel
 
     [JsonIgnore]
     public int StyleId { get; set; }
+    [JsonIgnore]
+    public long Ping { get; set; }
 
     public DateTime CreateAt { get; set; } = DateTime.Now;
+
 }

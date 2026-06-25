@@ -16,7 +16,7 @@ namespace Application
         public static event EventHandler<bool> DnsChanged;
         public static event EventHandler ForceDisconnect;
         public static event EventHandler ListUpdated;
-        
+
         public static bool IsUpdating = false;
 
         public static List<DnsCardModel> DnsList = new();
@@ -38,6 +38,7 @@ namespace Application
             e.Handled = true;
             Notification.Show(new(e.Exception.Message), false);
         }
+
         public static async Task AddDns(DnsCardModel dns)
         {
             try

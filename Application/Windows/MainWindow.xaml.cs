@@ -26,7 +26,7 @@ namespace Application
             e.Cancel = true;
             WindowState = WindowState.Minimized;
             ShowInTaskbar = false;
-            Notification.Hide();
+            Hide();
         }
 
         private void App_AccessDinied(object? sender, EventArgs e)
@@ -51,17 +51,16 @@ namespace Application
         {
         }
 
-       
+
 
 
         private async void Exit_Click(object sender, RoutedEventArgs e)
         {
             //await Task.Delay(TimeSpan.FromSeconds(2));
-
             WindowState = WindowState.Minimized;
             ShowInTaskbar = false;
+            Hide();
             Notification.Hide();
-
         }
 
         private void Dashboard_Click(object sender, RoutedEventArgs e)
@@ -90,6 +89,7 @@ namespace Application
         {
             try
             {
+                Show();
                 WindowState = WindowState.Normal;
                 ShowInTaskbar = true;
                 Activate();
@@ -122,10 +122,18 @@ namespace Application
                 }.ShowDialog();
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
+        private async void Window_KeyDown(object sender, KeyEventArgs e)
         {
+            if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.P)
+            {
+                foreach (var item in App.DnsList)
+                {
+                    await AppHelpers.TestPing(item);
+                }
+                e.Handled = true;
+            }
             //if (e.Key == Key.S)
-                //InkCanvas.SaveToImage(InkCanvas, $"{Random.Shared.Next(1,1000)}.png", ImageFormat.Png);
+            //InkCanvas.SaveToImage(InkCanvas, $"{Random.Shared.Next(1,1000)}.png", ImageFormat.Png);
         }
     }
 }

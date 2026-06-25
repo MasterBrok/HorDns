@@ -10,6 +10,7 @@ namespace Application.Windows
     {
         private readonly Rect _window;
         private readonly IEasingFunction _easingFunction;
+        private bool _isClosing;
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private Message message;
@@ -77,10 +78,20 @@ namespace Application.Windows
 
         protected override async void OnClosing(CancelEventArgs e)
         {
+            if (_isClosing)
+            {
+                base.OnClosing(e);
+                return;
+            }
+
             e.Cancel = true;
+            _isClosing = true;
+
             await Task.Delay(TimeSpan.FromSeconds(3));
             CloseBeginAnimation();
-            this.Close();
+            await Task.Delay(TimeSpan.FromSeconds(0.5));
+
+            Close();
         }
 
     }

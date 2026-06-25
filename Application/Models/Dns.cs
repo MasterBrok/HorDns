@@ -6,6 +6,16 @@ namespace Application.Models;
 
 public class Dns
 {
+
+    public Dns(Ip preferred, Ip alternate)
+    {
+        Preferred = preferred;
+        Alternate = alternate;
+    }
+    public Dns()
+    {
+        
+    }
     public Ip Preferred { get; set; } = Ip.Empty;
     public Ip Alternate { get; set; } = Ip.Empty;
 

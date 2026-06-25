@@ -1,105 +1,112 @@
-﻿<Window x:Class="Application.Windows.DesignCardWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Application.Windows"
-        xmlns:uc="clr-namespace:Application.UserControls" xmlns:con="clr-namespace:Application.Conventers"
-        mc:Ignorable="d"
-        Title="DesignCardWindow" 
-        Height="450" Width="800">
+﻿<Window
+    x:Class="Application.Windows.DesignCardWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:con="clr-namespace:Application.Conventers"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Application.Windows"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="clr-namespace:Application.UserControls"
+    Title="DesignCardWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
     <Window.Resources>
         <Style TargetType="uc:DnsCard">
-            <Setter Property="Width" Value="320"/>
-            <Setter Property="Height" Value="160"/>
-            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Width" Value="320" />
+            <Setter Property="Height" Value="160" />
+            <Setter Property="Margin" Value="5" />
         </Style>
         <Style TargetType="Slider">
-            <Setter Property="Maximum" Value="1"/>
-            <Setter Property="Minimum" Value="0"/>
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="Margin" Value="0 10"/>
+            <Setter Property="Maximum" Value="1" />
+            <Setter Property="Minimum" Value="0" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Margin" Value="0,10" />
         </Style>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="1">
             <StackPanel.Resources>
                 <Style TargetType="StackPanel">
-                    <Setter Property="Margin" Value="0 10"/>
+                    <Setter Property="Margin" Value="0,10" />
                 </Style>
             </StackPanel.Resources>
             <StackPanel>
-                <TextBox Text="{Binding Resource.Colors[0].Color,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
-                <Slider Value="{Binding Resource.Colors[0].Offset,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                <TextBox Text="{Binding Resource.Colors[0].Color, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                <Slider Value="{Binding Resource.Colors[0].Offset, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
             </StackPanel>
             <StackPanel>
-                <TextBox Text="{Binding Resource.Colors[1].Color,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
-                <Slider Value="{Binding Resource.Colors[1].Offset,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                <TextBox Text="{Binding Resource.Colors[1].Color, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                <Slider Value="{Binding Resource.Colors[1].Offset, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
             </StackPanel>
             <StackPanel>
-                <TextBox Text="{Binding Resource.Colors[2].Color,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
-                <Slider Value="{Binding Resource.Colors[2].Offset,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                <TextBox Text="{Binding Resource.Colors[2].Color, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                <Slider Value="{Binding Resource.Colors[2].Offset, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
             </StackPanel>
         </StackPanel>
         <Grid>
             <Grid.Resources>
-                <con:ColorHexConventer x:Key="convertToColor"/>
+                <con:ColorHexConventer x:Key="convertToColor" />
             </Grid.Resources>
 
             <Border
+                x:Name="brdMain"
                 Width="320"
                 Height="160"
-        x:Name="brdMain"
-        CornerRadius="20"
-        BorderBrush="{Binding Resource.BorderColor,Converter={StaticResource convertToColor}}"
-        BorderThickness="2"
-        >
+                BorderBrush="{Binding Resource.BorderColor, Converter={StaticResource convertToColor}}"
+                BorderThickness="2"
+                CornerRadius="20">
                 <Border.Triggers>
                     <EventTrigger RoutedEvent="Loaded">
                         <BeginStoryboard>
                             <Storyboard>
                                 <DoubleAnimation
-                            Storyboard.TargetProperty="Opacity"
-                            To="1"
-                            From="0"
-                            Duration="00:00:01"
-                            />
+                                    Storyboard.TargetProperty="Opacity"
+                                    From="0"
+                                    To="1"
+                                    Duration="00:00:01" />
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
                 </Border.Triggers>
                 <Border.Resources>
                     <Style TargetType="Button">
-                        <Setter Property="Foreground" Value="{StaticResource SecondTextColor}"/>
-                        <Setter Property="FontSize" Value="19"/>
-                        <Setter Property="FontFamily" Value="{StaticResource Main}"/>
-                        <Setter Property="VerticalContentAlignment" Value="Center"/>
-                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-                        <Setter Property="Width" Value="120"/>
-                        <Setter Property="Height" Value="40"/>
-                        <Setter Property="BorderBrush" Value="Transparent"/>
-                        <Setter Property="BorderThickness" Value="0"/>
-                        <Setter Property="Background" Value="{StaticResource Btn.Bg.Connect}"/>
+                        <Setter Property="Foreground" Value="{StaticResource SecondTextColor}" />
+                        <Setter Property="FontSize" Value="19" />
+                        <Setter Property="FontFamily" Value="{StaticResource Main}" />
+                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                        <Setter Property="Width" Value="120" />
+                        <Setter Property="Height" Value="40" />
+                        <Setter Property="BorderBrush" Value="Transparent" />
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="Background" Value="{StaticResource Btn.Bg.Connect}" />
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="Button">
-                                    <Border CornerRadius="20"
-                                    x:Name="border"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    Background="{TemplateBinding Background}">
+                                    <Border
+                                        x:Name="border"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="20">
                                         <Border.Effect>
-                                            <DropShadowEffect Opacity="0.9" BlurRadius="10" ShadowDepth="5" Color="{Binding Background.Color, RelativeSource={RelativeSource TemplatedParent},IsAsync=True}"/>
+                                            <DropShadowEffect
+                                                BlurRadius="10"
+                                                Opacity="0.9"
+                                                ShadowDepth="5"
+                                                Color="{Binding Background.Color, RelativeSource={RelativeSource TemplatedParent}, IsAsync=True}" />
                                         </Border.Effect>
-                                        <ContentPresenter Margin="0"
-                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                                        <ContentPresenter
+                                            Margin="0"
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                                     </Border>
                                     <!--<ControlTemplate.Triggers>
                                         <Trigger Property="Tag" Value="true">
@@ -134,19 +141,14 @@
                 <Grid>
 
                     <Border
-  x:Name="brdAnimate"
-Grid.ColumnSpan="2"
-                CornerRadius="{Binding ElementName=brdMain,Path=CornerRadius}"
-
->
+                        x:Name="brdAnimate"
+                        Grid.ColumnSpan="2"
+                        CornerRadius="{Binding ElementName=brdMain, Path=CornerRadius}">
                         <Border.Background>
-                            <LinearGradientBrush
-                                EndPoint="0.5,1"
-                                StartPoint="0.5,0"
-                                >
-                                <GradientStop Color="{Binding Resource.Colors[0].Color}" Offset="0.523"/>
-                                <GradientStop Color="{Binding Resource.Colors[1].Color}" Offset="0.893"/>
-                                <GradientStop Color="{Binding Resource.Colors[2].Color}" Offset="0.744"/>
+                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                <GradientStop Offset="0.523" Color="{Binding Resource.Colors[0].Color}" />
+                                <GradientStop Offset="0.893" Color="{Binding Resource.Colors[1].Color}" />
+                                <GradientStop Offset="0.744" Color="{Binding Resource.Colors[2].Color}" />
                             </LinearGradientBrush>
                         </Border.Background>
                         <Border.Style>
@@ -164,7 +166,7 @@ Grid.ColumnSpan="2"
                                             <Setter.Value>
                                                 <BlurEffect
                                             Radius="30"
-                                           KernelType="Gaussian" 
+                                           KernelType="Gaussian"
                                             RenderingBias="Quality"
                                             />
                                             </Setter.Value>
@@ -174,66 +176,52 @@ Grid.ColumnSpan="2"
                             </Style>
                         </Border.Style>
                     </Border>
-                    <Grid
-            Margin="20 0"
-            VerticalAlignment="Center"
-            >
+                    <Grid Margin="20,0" VerticalAlignment="Center">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
-                        <StackPanel
-                VerticalAlignment="Center"
-                    HorizontalAlignment="Left"
-                    >
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
                             <Image
-                    Margin="0 5"
-                    HorizontalAlignment="Left"
-                    Height="70"
-                    Source="{Binding Resource.Character,UpdateSourceTrigger=PropertyChanged,NotifyOnSourceUpdated=True}"
-                    />
+                                Height="70"
+                                Margin="0,5"
+                                HorizontalAlignment="Left"
+                                Source="{Binding Resource.Character, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}" />
                             <TextBlock
-                    VerticalAlignment="Bottom"
-                    Foreground="{StaticResource CardTextColor}"
-                    Text="{Binding Dns.Title}"
-                    FontSize="17"
-                    FontWeight="Bold"
-                    FontFamily="{StaticResource Main}"
-                    HorizontalAlignment="Center"
-                    />
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                FontFamily="{StaticResource Main}"
+                                FontSize="17"
+                                FontWeight="Bold"
+                                Foreground="{StaticResource CardTextColor}"
+                                Text="{Binding Dns.Title}" />
                             <TextBlock
-                    Foreground="{StaticResource CardTextColor}"
-                    Text="{Binding Dns.Ip.Preferred}"
-                    FontSize="14"
-                    FontWeight="Regular"
-                    FontFamily="{StaticResource Main}"
-                    HorizontalAlignment="Center"
-                    />
+                                HorizontalAlignment="Center"
+                                FontFamily="{StaticResource Main}"
+                                FontSize="14"
+                                FontWeight="Regular"
+                                Foreground="{StaticResource CardTextColor}"
+                                Text="{Binding Dns.Ip.Preferred}" />
                             <TextBlock
-                     Foreground="{StaticResource CardTextColor}"
-                     Text="{Binding Dns.Ip.Preferred}"
-                     FontSize="10"
-                     FontWeight="Regular"
-                     FontFamily="{StaticResource Main}"
-                     HorizontalAlignment="Center"
-                     />
+                                HorizontalAlignment="Center"
+                                FontFamily="{StaticResource Main}"
+                                FontSize="10"
+                                FontWeight="Regular"
+                                Foreground="{StaticResource CardTextColor}"
+                                Text="{Binding Dns.Ip.Preferred}" />
                         </StackPanel>
 
                         <StackPanel Grid.Column="1">
                             <Image
-                    Margin="0 5"
-                    HorizontalAlignment="Center"
-                    Height="70"
-                    Source="{Binding Resource.Symbol}"
-                    />
+                                Height="70"
+                                Margin="0,5"
+                                HorizontalAlignment="Center"
+                                Source="{Binding Resource.Symbol}" />
                             <Button
-                        x:Name="btnConnect"
-                        Content="Connect"
-                        Tag="true"
-                        >
-
-                            </Button>
+                                x:Name="btnConnect"
+                                Content="Connect"
+                                Tag="true" />
 
                         </StackPanel>
 

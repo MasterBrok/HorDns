@@ -1,66 +1,58 @@
-﻿<Window x:Class="Application.Windows.NotifiactionWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Application.Windows"
-        mc:Ignorable="d"
-        Title="NotifiactionWindow"
-        WindowStyle="None"
-        AllowsTransparency="True"
-        Background="Transparent"
-        Height="200" 
-        Width="400"
-        xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        ResizeMode="NoResize"
-        Topmost="True"
-        ShowInTaskbar="False"
-        WindowStartupLocation="CenterScreen"
-        >
+﻿<Window
+    x:Class="Application.Windows.NotifiactionWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Application.Windows"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    Title="NotifiactionWindow"
+    Width="400"
+    Height="200"
+    AllowsTransparency="True"
+    Background="Transparent"
+    ResizeMode="NoResize"
+    ShowInTaskbar="False"
+    Topmost="True"
+    WindowStartupLocation="CenterOwner"
+    WindowStyle="None"
+    mc:Ignorable="d">
 
-    <Border
-        CornerRadius="20"
-        >
+    <Border CornerRadius="20">
         <Border.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" MappingMode="RelativeToBoundingBox" SpreadMethod="Repeat">
-                <GradientStop Color="{DynamicResource Notification.Bg.GR.1}" Offset="0.6"/>
-                <GradientStop Color="{DynamicResource Notification.Bg.GR.2}" Offset="1"/>
+            <LinearGradientBrush MappingMode="RelativeToBoundingBox" SpreadMethod="Repeat" StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Offset="0.6" Color="{DynamicResource Notification.Bg.GR.1}" />
+                <GradientStop Offset="1" Color="{DynamicResource Notification.Bg.GR.2}" />
             </LinearGradientBrush>
         </Border.Background>
-        <Grid
-            Margin="10"
-            >
+        <Grid Margin="10">
             <Image
-                HorizontalAlignment="Right"
-                Stretch="Fill"
                 Width="160"
-                Source="{Binding Image,NotifyOnTargetUpdated=True,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
-                >
+                HorizontalAlignment="Right"
+                Source="{Binding Image, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
+                Stretch="Fill">
                 <Image.Effect>
                     <DropShadowEffect
+                        BlurRadius="50"
                         Direction="233"
                         ShadowDepth="2"
-                        BlurRadius="50"
-                        Color="{DynamicResource Notification.Bg.GR.1}"
-                        />
+                        Color="{DynamicResource Notification.Bg.GR.1}" />
                 </Image.Effect>
             </Image>
             <TextBlock
-                FontFamily="{StaticResource Main}"
-                Foreground="{StaticResource PrimaryTextColor}"
-                FontSize="19"
                 Width="240"
-                TextWrapping="Wrap"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                Text="{Binding Message.Text,NotifyOnTargetUpdated=True,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
-                >
+                FontFamily="{StaticResource Main}"
+                FontSize="19"
+                Foreground="{StaticResource PrimaryTextColor}"
+                Text="{Binding Message.Text, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
+                TextWrapping="Wrap">
                 <TextBlock.Effect>
                     <DropShadowEffect
-                        ShadowDepth="4"
                         BlurRadius="10"
-                        Color="{DynamicResource Notification.Bg.GR.1}"
-                        />
+                        ShadowDepth="4"
+                        Color="{DynamicResource Notification.Bg.GR.1}" />
                 </TextBlock.Effect>
             </TextBlock>
         </Grid>

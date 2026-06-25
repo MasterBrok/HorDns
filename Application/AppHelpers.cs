@@ -1,5 +1,10 @@
-﻿using System.Drawing.Imaging;
+﻿using Application.Models;
+using DnsClient;
+using System.Drawing.Imaging;
 using System.IO;
+using System.Net;
+using System.Net.NetworkInformation;
+using System.Text;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -38,6 +43,16 @@ namespace Application
                 encoder.Save(fs);
             }
         }
+        public static async Task TestPing(DnsCardModel dns)
+        {
+            using Ping ping = new Ping();
+            //IPAddress ip = new(Encoding.UTF8.GetBytes(dns.Dns.Preferred.Value));
+            var res = await ping.SendPingAsync(dns.Dns.Preferred.Value);
+            if (res.Status == IPStatus.Success)
+                dns.Ping = res.RoundtripTime;
 
+        }
     }
+
+
 }

@@ -2,6 +2,9 @@
 using Application.Models;
 using Application.Services;
 using System.ComponentModel;
+using System.Net;
+using System.Net.NetworkInformation;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -17,7 +20,7 @@ public partial class DnsCard : UserControl, INotifyPropertyChanged
         //InitializeAutoScroll();
         this.DataContext = this;
         this.Loaded += DnsCard_Loaded;
-        
+
         Dns = new()
         {
             Title = "ad"

@@ -1,0 +1,223 @@
+﻿<Window
+    x:Class="Application.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cc="clr-namespace:Application.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Application"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tb="clr-namespace:H.NotifyIcon;assembly=H.NotifyIcon.Wpf"
+    xmlns:uc="clr-namespace:Application.UserControls"
+    Title="Hor Dns"
+    Width="1320"
+    Height="700"
+    AllowsTransparency="True"
+    Background="Transparent"
+    KeyDown="Window_KeyDown"
+    Loaded="Window_Loaded"
+    ResizeMode="CanMinimize"
+    ShowInTaskbar="True"
+    Topmost="False"
+    WindowChrome.IsHitTestVisibleInChrome="False"
+    WindowChrome.WindowChrome="{x:Null}"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+
+    <Border CornerRadius="40">
+        <Border.Background>
+            <LinearGradientBrush MappingMode="RelativeToBoundingBox" SpreadMethod="Repeat" StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Offset="0.6" Color="{DynamicResource Main.Bg.GR.1}" />
+                <GradientStop Offset="1" Color="{DynamicResource Main.Bg.GR.2}" />
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <!--  StatusBar  -->
+                <RowDefinition Height="80" />
+                <!--  Page  -->
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <tb:TaskbarIcon
+                x:Name="MyNotifyIcon"
+                IconSource="/Icons/trayfavorite.ico"
+                PreviewTrayContextMenuOpen="MyNotifyIcon_PreviewTrayContextMenuOpen"
+                ToolTipText="hello world"
+                TrayContextMenuOpen="MyNotifyIcon_TrayContextMenuOpen">
+
+                <tb:TaskbarIcon.ContextMenu>
+                    <ContextMenu>
+                        <ContextMenu.Style>
+                            <Style TargetType="ContextMenu">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush MappingMode="RelativeToBoundingBox" SpreadMethod="Repeat" StartPoint="0.5,0" EndPoint="0.5,1">
+                                            <GradientStop Offset="0.6" Color="{DynamicResource Main.Bg.GR.1}" />
+                                            <GradientStop Offset="1" Color="{DynamicResource Main.Bg.GR.2}" />
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ContextMenu.Style>
+                        <MenuItem Click="Open_MenuItem_Click" Header="Open" />
+                        <Separator />
+
+                        <MenuItem Click="Exit_MenuItem_Click" Header="Exit" />
+
+
+
+
+
+                    </ContextMenu>
+                </tb:TaskbarIcon.ContextMenu>
+
+            </tb:TaskbarIcon>
+
+
+            <DockPanel
+                Margin="20,0"
+                Background="Transparent"
+                MouseLeftButtonDown="DockPanel_MouseLeftButtonDown">
+                <DockPanel.Resources>
+                    <Style TargetType="{x:Type cc:ButtonIcon}">
+                        <Setter Property="Width" Value="60" />
+                        <Setter Property="Height" Value="60" />
+                        <Setter Property="Margin" Value="20,0" />
+                    </Style>
+                </DockPanel.Resources>
+                <StackPanel
+                    Width="Auto"
+                    DockPanel.Dock="Right"
+                    Orientation="Horizontal">
+                    <cc:ButtonIcon
+                        Margin="0"
+                        ButtonTemplate="OnlyIcon"
+                        Click="Exit_Click"
+                        Icon="{StaticResource Close}" />
+                </StackPanel>
+
+
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                    <!--<cc:ButtonIcon
+                    Margin="0"
+                        Click="Close_Click"
+                        ButtonTemplate="OnlyIcon"
+                 Icon="{StaticResource Minus}"
+                 />-->
+                </StackPanel>
+
+                <StackPanel
+                    HorizontalAlignment="Left"
+                    DockPanel.Dock="Right"
+                    Orientation="Horizontal">
+                    <Image
+                        Width="100"
+                        Source="/Resources/Assets/main.png"
+                        Stretch="Uniform" />
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontFamily="{StaticResource Main}"
+                        FontSize="25"
+                        Foreground="{StaticResource PrimaryTextColor}"
+                        Text="Hor Dns" />
+                </StackPanel>
+
+            </DockPanel>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <!--  Menus  -->
+                    <ColumnDefinition Width="*" />
+                    <!--  Page  -->
+                    <ColumnDefinition Width="4.5*" />
+                </Grid.ColumnDefinitions>
+
+
+                <Frame
+                    x:Name="Frame"
+                    Grid.Column="1"
+                    NavigationUIVisibility="Hidden"
+                    Source="/Pages/Dashboard.xaml" />
+                <!--<Grid Grid.Column="1" Margin="50">
+
+                    <Image
+                        Source="/Resources/Assets/bg2.png"
+                        >
+                        <Image.Effect>
+                            <BlurEffect
+                                Radius="5"
+                                RenderingBias="Quality"
+                                />
+                        </Image.Effect>
+                    </Image>
+                    <TextBlock
+                        FontFamily="{StaticResource Main}"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource PrimaryTextColor}"
+                        FontSize="24"
+                        >
+                        Hi
+                    </TextBlock>
+
+                </Grid>-->
+
+
+                <Grid Margin="20,20">
+                    <Grid.Resources>
+                        <Style TargetType="cc:ButtonIcon">
+                            <Setter Property="Margin" Value="10,20" />
+                            <Setter Property="Height" Value="40" />
+
+                        </Style>
+                    </Grid.Resources>
+                    <StackPanel>
+                        <!--<cc:ButtonIcon
+                            Click="Dashboard_Click"
+                            Content="Dashboard"
+                            DistanceBetwewn="20"
+                            Icon="{StaticResource Home}" />
+                        <cc:ButtonIcon
+                            Content="Settings"
+                            DistanceBetwewn="20"
+                            Icon="{StaticResource Settings}" />-->
+                        <cc:ButtonIcon
+                            Click="AddDns_Click"
+                            Content="Add"
+                            DistanceBetwewn="20"
+                            Icon="{StaticResource AddItem}" />
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal">
+
+                        <StackPanel
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Orientation="Horizontal">
+                            <StackPanel.Resources>
+                                <Style BasedOn="{StaticResource ShiningButton}" TargetType="Button">
+                                    <Setter Property="Height" Value="40" />
+                                    <Setter Property="Width" Value="90" />
+                                    <Setter Property="Margin" Value="5,15" />
+                                </Style>
+                            </StackPanel.Resources>
+                            <!--<Button
+                               Background="#B180FF"
+                                BorderBrush="#A56EFF"
+                               Foreground="{StaticResource SecondTextColor}"
+                               Content="Donate"
+                               />
+
+                            <Button
+                                 Foreground="#FF9C9C"
+                                 BorderBrush="#FF9C9C"
+                                 Background="#F7C6E3"
+                                 Content="Github"
+                                />-->
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+        </Grid>
+    </Border>
+</Window>

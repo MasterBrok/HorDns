@@ -43,7 +43,6 @@ namespace Application.Pages
                     await Task.Delay(300);
                     if (currentDns is not null && card.Dns.Dns.Equals(currentDns))
                         card.Connect();
-                    App.AddToList(card.Dns);
                     wpDns.Children.Add(card);
                 }
 
