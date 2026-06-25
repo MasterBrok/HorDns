@@ -1,0 +1,120 @@
+name: Build and Release HorDns
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+env:
+  PROJECT_PATH: ./Application
+  PROJECT_NAME: HorDns
+
+jobs:
+  build:
+    name: Build WPF (${{ matrix.platform }})
+    runs-on: windows-latest
+    
+    strategy:
+      matrix:
+        platform: [x86, x64]
+        include:
+          - platform: x86
+            runtime: win-x86
+          - platform: x64
+            runtime: win-x64
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup .NET 10
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
+    
+    - name: Restore dependencies
+      run: dotnet restore ${{ env.PROJECT_PATH }}
+      working-directory: ${{ github.workspace }}
+    
+    - name: Publish WPF App (${{ matrix.platform }})
+      run: |
+        dotnet publish ${{ env.PROJECT_PATH }} `
+          -c Release `
+          -r ${{ matrix.runtime }} `
+          --self-contained true `
+          -p:PublishSingleFile=false `
+          -p:IncludeNativeLibrariesForSelfExtract=true `
+          -p:DebugType=None `
+          -p:DebugSymbols=false `
+          -p:PublishReadyToRun=true `
+          -p:UseAppHost=true `
+          -p:CopyLocalLockFileAssemblies=true `
+          -p:GenerateRuntimeConfigurationFiles=true `
+          --output ./publish/${{ matrix.platform }}
+      shell: pwsh
+      working-directory: ${{ github.workspace }}
+    
+    - name: Zip the published files
+      run: |
+        7z a -tzip ${{ env.PROJECT_NAME }}-${{ matrix.platform }}.zip ./publish/${{ matrix.platform }}/*
+        Write-Host "ZIP created: ${{ env.PROJECT_NAME }}-${{ matrix.platform }}.zip"
+      shell: pwsh
+      working-directory: ${{ github.workspace }}
+    
+    - name: Upload ZIP artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.PROJECT_NAME }}-${{ matrix.platform }}
+        path: ${{ github.workspace }}/${{ env.PROJECT_NAME }}-${{ matrix.platform }}.zip
+        retention-days: 30
+
+  release:
+    name: Create Release
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    
+    steps:
+    - name: Download all artifacts
+      uses: actions/download-artifact@v4
+      with:
+        path: ./artifacts
+    
+    - name: List downloaded files
+      run: |
+        echo "Downloaded artifacts:"
+        ls -la ./artifacts
+        echo "================================"
+        find ./artifacts -name "*.zip" -type f
+      shell: bash
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: ./artifacts/**/*.zip
+        tag_name: ${{ github.ref_name }}
+        name: Release ${{ github.ref_name }}
+        draft: false
+        prerelease: false
+        generate_release_notes: true
+        body: |
+          ## 🚀 HorDns - Release ${{ github.ref_name }}
+          
+          ### 📦 Download
+          - **[HorDns-x64.zip](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/HorDns-x64.zip)** - برای سیستم‌های ۶۴ بیتی
+          - **[HorDns-x86.zip](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/HorDns-x86.zip)** - برای سیستم‌های ۳۲ بیتی
+          
+          ### ⚙️ System Requirements
+          - **Windows 10/11** (64-bit or 32-bit)
+          - **No .NET Runtime required** (Self-Contained)
+          
+          ### 🔧 Installation
+          1. Download the ZIP file for your system
+          2. Extract the files
+          3. Run `HorDns.exe`
+          
+          ### 📝 Release Notes
+          ${{ github.event.head_commit.message }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
