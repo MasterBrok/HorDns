@@ -7,12 +7,12 @@ on:
   workflow_dispatch:
 
 env:
-  PROJECT_PATH: ./Application
-  PROJECT_NAME: HorDns
+  PROJECT_PATH: ./Application/Application.csproj
+  PROJECT_NAME: Application
 
 jobs:
   build:
-    name: Build WPF (${{ matrix.platform }})
+    name: Build (${{ matrix.platform }})
     runs-on: windows-latest
     
     strategy:
@@ -35,38 +35,40 @@ jobs:
     
     - name: Restore dependencies
       run: dotnet restore ${{ env.PROJECT_PATH }}
-      working-directory: ${{ github.workspace }}
     
     - name: Publish WPF App (${{ matrix.platform }})
       run: |
-        dotnet publish ${{ env.PROJECT_PATH }} `
-          -c Release `
-          -r ${{ matrix.runtime }} `
-          --self-contained true `
-          -p:PublishSingleFile=false `
-          -p:IncludeNativeLibrariesForSelfExtract=true `
-          -p:DebugType=None `
-          -p:DebugSymbols=false `
-          -p:PublishReadyToRun=true `
-          -p:UseAppHost=true `
-          -p:CopyLocalLockFileAssemblies=true `
-          -p:GenerateRuntimeConfigurationFiles=true `
+        dotnet publish ${{ env.PROJECT_PATH }} \
+          -c Release \
+          -r ${{ matrix.runtime }} \
+          --self-contained true \
+          -p:PublishSingleFile=false \
+          -p:IncludeNativeLibrariesForSelfExtract=true \
+          -p:DebugType=None \
+          -p:DebugSymbols=false \
+          -p:PublishReadyToRun=true \
+          -p:UseAppHost=true \
+          -p:CopyLocalLockFileAssemblies=true \
+          -p:GenerateRuntimeConfigurationFiles=true \
           --output ./publish/${{ matrix.platform }}
+        
+        Write-Host "================================"
+        Write-Host "Files published for ${{ matrix.platform }}:"
+        Get-ChildItem ./publish/${{ matrix.platform }} -File | Measure-Object | Select-Object -ExpandProperty Count
+        Write-Host "================================"
       shell: pwsh
-      working-directory: ${{ github.workspace }}
     
     - name: Zip the published files
       run: |
         7z a -tzip ${{ env.PROJECT_NAME }}-${{ matrix.platform }}.zip ./publish/${{ matrix.platform }}/*
         Write-Host "ZIP created: ${{ env.PROJECT_NAME }}-${{ matrix.platform }}.zip"
       shell: pwsh
-      working-directory: ${{ github.workspace }}
     
     - name: Upload ZIP artifact
       uses: actions/upload-artifact@v4
       with:
         name: ${{ env.PROJECT_NAME }}-${{ matrix.platform }}
-        path: ${{ github.workspace }}/${{ env.PROJECT_NAME }}-${{ matrix.platform }}.zip
+        path: ${{ env.PROJECT_NAME }}-${{ matrix.platform }}.zip
         retention-days: 30
 
   release:
