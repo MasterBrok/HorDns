@@ -70,6 +70,9 @@ internal class DataInitilizer
             if (!File.Exists("setting.json"))
             {
                 using var file = File.Create("setting.json");
+                var dnsStream = App.GetResourceStream(new("pack://application:,,,/defsetting.json")).Stream;
+                await dnsStream.CopyToAsync(file);
+                //var bytes = Encoding.UTF8.GetBytes(dnsStream);
             }
             string json = await File.ReadAllTextAsync("setting.json");
             if (!string.IsNullOrWhiteSpace(json))
@@ -78,8 +81,6 @@ internal class DataInitilizer
                  .ToList();
             }
 #endif
-
-
         }
         catch (Exception e)
         {
@@ -92,6 +93,7 @@ internal class DataInitilizer
         }
         int id = 0;
         Random rand = new Random();
+        App.DnsList.Clear();
         foreach (var dns in dnss)
         {
             dns.StyleId = rand.Next(1, styles.Count);
@@ -103,7 +105,7 @@ internal class DataInitilizer
 
                 if (string.IsNullOrWhiteSpace(cardStyle?.Symbol))
                     cardStyle.Symbol = $"heart{rand.Next(1, 3)}.png";
-
+                App.AddToList(dns);
                 yield return new DnsCard
                 {
                     Resource = cardStyle,

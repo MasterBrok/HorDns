@@ -73,6 +73,7 @@ namespace Application.Windows
             finally
             {
                 this.IsEnabled = true;
+                this.Close();
             }
         }
 
