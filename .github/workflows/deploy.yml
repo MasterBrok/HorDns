@@ -38,18 +38,18 @@ jobs:
     
     - name: Publish WPF App (${{ matrix.platform }})
       run: |
-        dotnet publish ${{ env.PROJECT_PATH }} \
-          -c Release \
-          -r ${{ matrix.runtime }} \
-          --self-contained true \
-          -p:PublishSingleFile=false \
-          -p:IncludeNativeLibrariesForSelfExtract=true \
-          -p:DebugType=None \
-          -p:DebugSymbols=false \
-          -p:PublishReadyToRun=true \
-          -p:UseAppHost=true \
-          -p:CopyLocalLockFileAssemblies=true \
-          -p:GenerateRuntimeConfigurationFiles=true \
+        dotnet publish ${{ env.PROJECT_PATH }} `
+          -c Release `
+          -r ${{ matrix.runtime }} `
+          --self-contained true `
+          -p:PublishSingleFile=false `
+          -p:IncludeNativeLibrariesForSelfExtract=true `
+          -p:DebugType=None `
+          -p:DebugSymbols=false `
+          -p:PublishReadyToRun=true `
+          -p:UseAppHost=true `
+          -p:CopyLocalLockFileAssemblies=true `
+          -p:GenerateRuntimeConfigurationFiles=true `
           --output ./publish/${{ matrix.platform }}
         
         Write-Host "================================"
